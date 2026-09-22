@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Eine farbig gefüllte 2D-Geometrie aus Dreiecken, dargestellt mit WebGL."
+    >
+
+    <title>Farbig gefüllte 2D-Geometrie</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sprunglink für die Bedienung mit der Tastatur -->
+    <a class="sprunglink" href="#hauptinhalt">
+        Direkt zum Inhalt
+    </a>
+
+
+    <!-- Kopfbereich der Webseite -->
+    <header class="seitenkopf">
+
+        <div class="kopfbereich">
+
+
+            <h1>Farbig gefüllte 2D-Geometrie</h1>
+
+            <p class="einleitung">
+                Der Pinguin aus der vorherigen Aufgabe bekommt nun
+                Farbe. Seine Flächen werden vollständig aus
+                Dreiecken zusammengesetzt und mit WebGL dargestellt.
+            </p>
+
+
+            <!-- Persönliches Bild im Banner -->
+            <img
+                class="profilbild"
+                src="bilder/ich2.png"
+                alt="Comicfigur von Cassandra Ludwig, die zur Begrüßung winkt"
+                width="174"
+                height="350"
+            >
+
+        </div>
+
+    </header>
+
+
+    <!-- Hauptinhalt -->
+    <main id="hauptinhalt">
+
+        <section
+            class="darstellungsbereich"
+            aria-labelledby="geometrieTitel"
+        >
+
+            <article class="webglkarte">
+
+                <header class="kartenkopf">
+
+                    <p class="kartenkategorie">
+                        Farbige Flächen
+                    </p>
+
+                    <h2 id="geometrieTitel">
+                        Der Pinguin aus Dreiecken
+                    </h2>
+
+                    <p>
+                        Runde und eckige Flächen werden aus vielen
+                        einzelnen Dreiecken zusammengesetzt.
+                        Unterschiedliche Farben an den Vertices
+                        erzeugen weiche Farbübergänge.
+                    </p>
+
+                </header>
+
+
+                <div class="vergleichsansichten">
+
+                    <figure class="vergleichskarte">
+
+                        <div class="canvasrahmen">
+
+                            <canvas
+                                id="webglCanvas"
+                                width="700"
+                                height="700"
+                                aria-label="Mit WebGL dargestellter farbiger Pinguin aus gefüllten Dreiecken"
+                            >
+                                Dein Browser unterstützt das benötigte
+                                Canvas-Element leider nicht.
+                            </canvas>
+
+                        </div>
+
+                        <figcaption>
+                            <strong>Der fertige Pinguin</strong>
+                            <span>
+                                Die farbig gefüllte WebGL-Geometrie.
+                            </span>
+                        </figcaption>
+
+                    </figure>
+
+
+                    <figure class="vergleichskarte">
+
+                        <div class="canvasrahmen">
+
+                            <canvas
+                            id="dreieckeCanvas"
+                            width="700"
+                            height="700"
+                            aria-label="Derselbe Pinguin mit sichtbaren Konturen der tatsächlich verwendeten Dreiecke"
+                            >
+                            Dein Browser unterstützt das benötigte Canvas-Element leider nicht.
+                            </canvas>
+
+                        </div>
+
+                        <figcaption>
+                            <strong>Die Dreiecke dahinter</strong>
+                            <span>
+                                Die Konturen zeigen den Aufbau
+                                der Farbflächen.
+                            </span>
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+
+                <p
+                    id="webglStatus"
+                    class="statusanzeige"
+                    role="status"
+                    aria-live="polite"
+                >
+                    WebGL wird vorbereitet …
+                </p>
+
+
+                <!-- Automatisch berechnete Geometriedaten -->
+                <div
+                    class="geometriedaten"
+                    aria-label="Informationen zur Geometrie"
+                >
+
+                    <div class="datenfeld">
+
+                        <span
+                            id="vertexAnzahl"
+                            class="datenwert"
+                        >
+                            –
+                        </span>
+
+                        <span class="datenbezeichnung">
+                            Vertices
+                        </span>
+
+                    </div>
+
+
+                    <div class="datenfeld">
+
+                        <span
+                            id="dreieckAnzahl"
+                            class="datenwert"
+                        >
+                            –
+                        </span>
+
+                        <span class="datenbezeichnung">
+                            Dreiecke
+                        </span>
+
+                    </div>
+
+
+                    <div class="datenfeld">
+
+                        <span
+                            id="formenAnzahl"
+                            class="datenwert"
+                        >
+                            –
+                        </span>
+
+                        <span class="datenbezeichnung">
+                            Farbflächen
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        
+        <!-- Dokumentation -->
+        <section
+            class="dokumentation"
+            aria-labelledby="dokumentationTitel"
+        >
+
+            <div class="abschnittskopf">
+
+                <p class="aufgabenbezeichnung">
+                    Informationen zur Umsetzung
+                </p>
+
+                <h2 id="dokumentationTitel">
+                    Dokumentation
+                </h2>
+
+                <p>
+                    Kurze Informationen zur Gestaltung, zum Aufbau
+                    der Geometrie und zur Verwendung der Farben.
+                </p>
+
+            </div>
+
+
+            <div class="dokumentationsraster">
+
+                <article class="dokumentationskarte">
+
+                    <h3>Idee und Gestaltung</h3>
+
+                    <p>
+                        Für diese Aufgabe habe ich den Pinguin aus
+                        Aufgabe 2 erneut aufgegriffen. Während er dort
+                        nur aus Linien bestand, wird er nun als
+                        vollständig farbig gefüllte Figur dargestellt.
+                    </p>
+
+                    <p>
+                        Der Pinguin behält seine bewusst einfache und
+                        etwas kindliche Gestaltung. Durch den Dutt,
+                        die großen Augen, die Wangen und die typischen
+                        Farben soll er trotzdem einen eigenen
+                        Charakter erhalten.
+                    </p>
+
+                    <p>
+                        Für die Farbgestaltung habe ich Dunkelblau,
+                        Creme, Braun, Orange und Rosa gewählt. Damit
+                        bleibt auch die Verbindung zur bisherigen
+                        Gestaltung der Aufgaben erhalten.
+                    </p>
+
+                </article>
+
+
+                <article class="dokumentationskarte">
+
+                    <h3>Technische Umsetzung</h3>
+
+                    <p>
+                        Die Webseite wurde in Visual Studio Code mit
+                        HTML, CSS und JavaScript erstellt. Die
+                        Geometrie wird mit WebGL in einem
+                        <code>&lt;canvas&gt;</code>-Element
+                        dargestellt.
+                    </p>
+
+                    <p>
+                        Alle sichtbaren Flächen bestehen aus
+                        Dreiecken. Es werden keine WebGL-Linien
+                        verwendet. Auch runde Formen wie Körper,
+                        Bauch und Augen werden aus mehreren kleinen
+                        Dreiecken zusammengesetzt.
+                    </p>
+
+                    <p>
+                        Die Positionen der Vertices, ihre Farben und
+                        die Indices werden in zueinander passenden
+                        Arrays gespeichert. Gezeichnet wird mit
+                        <code>gl.drawElements()</code> und
+                        <code>gl.TRIANGLES</code>.
+                        Die rechte Vergleichsansicht zeigt zusätzlich 
+                        die Kanten der Dreiecke, aus denen der links mit 
+                        WebGL gefüllte Pinguin aufgebaut ist.
+                    </p>
+
+                </article>
+
+
+                <article class="dokumentationskarte">
+
+                    <h3>Farben und Farbverläufe</h3>
+
+                    <p>
+                        Jedem Vertex wird zusätzlich zu seiner
+                        Position eine Farbe zugeordnet. Der
+                        Vertex-Shader übergibt diese Farbe an den
+                        Fragment-Shader.
+                    </p>
+
+                    <p>
+                        Besitzen die Vertices eines Dreiecks
+                        unterschiedliche Farben, berechnet WebGL
+                        automatisch die Farbübergänge zwischen den
+                        Punkten. Dadurch entstehen Farbverläufe auf
+                        den Flächen.
+                    </p>
+
+                    <p>
+                        Die verwendete Geometrie und die
+                        Farbgestaltung wurden für diese Aufgabe selbst
+                        erstellt. Fremdes Bildmaterial wurde für den
+                        Pinguin nicht verwendet.
+                    </p>
+
+                </article>
+
+
+                <article class="dokumentationskarte">
+
+                    <h3>Test und Veröffentlichung</h3>
+
+                    <p>
+                        Die Darstellung wurde in Google Chrome getestet.
+                        Zusätzlich wurde die Entwicklerkonsole auf
+                        Fehlermeldungen überprüft.
+                    </p>
+
+                    <p>
+                        Das fertige Projekt wurde in einem
+                        GitHub-Repository gespeichert und über
+                        GitHub Pages öffentlich bereitgestellt.
+                    </p>
+
+                    <p>
+                        Eine Interaktion ist in dieser Aufgabe nicht
+                        vorgesehen.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section
+    class="entwicklung"
+    aria-labelledby="entwicklungTitel"
+>
+    <div class="abschnittskopf">
+        <p class="uebertitel">
+            Entstehungsprozess
+        </p>
+
+        <h2 id="entwicklungTitel">
+            Schritt für Schritt zum fertigen Pinguin
+        </h2>
+
+        <p>
+            In den folgenden Bildern zeige ich, wie ich den 
+            Pinguin Schritt für Schritt aus farbigen Flächen 
+            aufgebaut und anschließend um weitere Details ergänzt habe.
+        </p>
+    </div>
+
+    <div
+        class="slideshow"
+        id="slideshow"
+        tabindex="0"
+        aria-label="Entstehungsprozess des Pinguins"
+    >
+        <figure class="entwicklungsbild">
+
+            <img
+                id="slideshowBild"
+                src="bilder/entwicklung/schritt_01.png"
+                alt="Erster Entwicklungsschritt mit der Grundform des Pinguins"
+            >
+
+            <figcaption>
+                <span id="bildZaehler">
+                    Bild 1 von 5
+                </span>
+
+                <strong id="bildTitel">
+                    Die Grundform entsteht
+                </strong>
+
+                <span id="bildBeschreibung">
+                    Körper, Bauch, Kopf, Flügel und Füße bilden
+                    zunächst die einfache Grundform.
+                </span>
+            </figcaption>
+
+        </figure>
+
+        <div
+            class="slideshow-steuerung"
+            aria-label="Slideshow steuern"
+        >
+            <button
+                id="zurueckButton"
+                type="button"
+                aria-label="Vorherigen Entwicklungsschritt anzeigen"
+            >
+                ← Zurück
+            </button>
+
+            <div
+                class="bildpunkte"
+                id="bildpunkte"
+                aria-hidden="true"
+            ></div>
+
+            <button
+                id="weiterButton"
+                type="button"
+                aria-label="Nächsten Entwicklungsschritt anzeigen"
+            >
+                Weiter →
+            </button>
+        </div>
+
+        <p class="tastaturhinweis">
+            Die Slideshow kann auch mit den Pfeiltasten bedient werden,
+            sobald sie ausgewählt wurde.
+        </p>
+    </div>
+</section>
+
+    </main>
+
+
+    <!-- Fußbereich -->
+    <footer class="seitenfuss">
+
+        <p>
+            EA 3 · Farbig gefüllte 2D-Geometrie
+        </p>
+
+        <p>
+            Erstellt von Cassandra Ludwig
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

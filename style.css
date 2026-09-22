@@ -1,0 +1,946 @@
+/* --------------------------------------------------
+   1. GRUNDEINSTELLUNGEN UND FARBEN
+-------------------------------------------------- */
+
+:root {
+    --dunkelblau: #123b5d;
+    --dunkelblau-tief: #09263d;
+    --tuerkis: #2e9e9a;
+    --tuerkis-hell: #d9f1ef;
+    --creme: #f4e7c5;
+    --creme-hell: #fffaf0;
+    --orange: #f28c28;
+    --orange-hell: #fff0dc;
+    --rosa: #dc6473;
+    --rosa-hell: #fbe9ed;
+    --braun: #65412f;
+    --weiss: #ffffff;
+    --hintergrund: #f5f8fa;
+    --textfarbe: #243746;
+    --text-hell: #526776;
+    --rahmen: #d7e1e8;
+    --erfolg: #287a64;
+    --schatten: 0 14px 35px rgba(18, 59, 93, 0.12);
+}
+
+
+/* Größenberechnung vereinheitlichen */
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--textfarbe);
+
+    background:
+        linear-gradient(
+            180deg,
+            #edf6f7 0,
+            var(--hintergrund) 430px
+        );
+
+    line-height: 1.6;
+}
+
+
+img,
+canvas {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* --------------------------------------------------
+   2. TASTATURBEDIENUNG
+-------------------------------------------------- */
+
+.sprunglink {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+
+    padding: 12px 18px;
+
+    color: var(--weiss);
+    background-color: var(--dunkelblau);
+
+    border: 3px solid var(--orange);
+    border-radius: 8px;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transform: translateY(-160%);
+    transition: transform 0.2s ease;
+}
+
+
+.sprunglink:focus {
+    transform: translateY(0);
+}
+
+
+a:focus-visible {
+    outline: 4px solid var(--orange);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+
+/* --------------------------------------------------
+   3. KOPFBEREICH
+-------------------------------------------------- */
+
+.seitenkopf {
+    position: relative;
+    overflow: hidden;
+
+    padding: 72px 24px 78px;
+
+    color: var(--weiss);
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(242, 140, 40, 0.24),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 68% 80%,
+            rgba(46, 158, 154, 0.25),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            var(--dunkelblau-tief),
+            var(--dunkelblau)
+        );
+}
+
+
+/* Dekorativer Kreis */
+.seitenkopf::after {
+    content: "";
+
+    position: absolute;
+    right: -90px;
+    bottom: -160px;
+
+    width: 360px;
+    height: 360px;
+
+    border: 45px solid rgba(244, 231, 197, 0.09);
+    border-radius: 50%;
+}
+
+
+.kopfbereich {
+    position: relative;
+    z-index: 1;
+
+    width: min(1120px, 100%);
+    min-height: 220px;
+    margin: 0 auto;
+    padding-right: 250px;
+}
+
+
+.aufgabenbezeichnung {
+    margin: 0 0 10px;
+
+    color: var(--orange);
+
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+.seitenkopf h1 {
+    max-width: 850px;
+    margin: 0;
+
+    font-size: clamp(2.3rem, 6vw, 4.6rem);
+    line-height: 1.05;
+}
+
+
+.einleitung {
+    max-width: 760px;
+    margin: 24px 0 0;
+
+    color: #e8f3f5;
+
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+
+/* Persönliches Bild im Banner */
+.profilbild {
+    position: absolute;
+    right: 35px;
+    bottom: -40px;
+    z-index: 5;
+
+    width: 155px;
+    max-width: none;
+    height: auto;
+
+    background-color: transparent;
+
+    filter: drop-shadow(
+        0 10px 10px rgba(0, 0, 0, 0.22)
+    );
+}
+
+
+/* --------------------------------------------------
+   4. HAUPTINHALT
+-------------------------------------------------- */
+
+main {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+.darstellungsbereich {
+    position: relative;
+    z-index: 2;
+
+    margin-top: -38px;
+}
+
+
+/* --------------------------------------------------
+   5. WEBGL-KARTE
+-------------------------------------------------- */
+
+.webglkarte {
+    overflow: hidden;
+
+    padding: 42px;
+
+    background-color: var(--weiss);
+
+    border: 1px solid var(--rahmen);
+    border-top: 7px solid var(--orange);
+    border-radius: 24px;
+
+    box-shadow: var(--schatten);
+}
+
+
+.kartenkopf {
+    max-width: 800px;
+    margin: 0 auto 30px;
+
+    text-align: center;
+}
+
+
+.kartenkategorie {
+    display: inline-block;
+
+    margin: 0 0 8px;
+    padding: 5px 12px;
+
+    color: #8a4810;
+    background-color: var(--orange-hell);
+
+    border-radius: 999px;
+
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+.kartenkopf h2 {
+    margin: 5px 0 12px;
+
+    color: var(--dunkelblau);
+
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+
+.kartenkopf p {
+    max-width: 700px;
+    margin: 0 auto;
+
+    color: var(--text-hell);
+}
+
+
+/* --------------------------------------------------
+   6. WEBGL-CANVAS
+-------------------------------------------------- */
+
+.canvasrahmen {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 24px;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255, 255, 255, 0.98) 0,
+            rgba(255, 250, 240, 0.95) 48%,
+            rgba(217, 241, 239, 0.9) 100%
+        );
+
+    border: 2px solid var(--dunkelblau);
+    border-radius: 20px;
+
+    box-shadow:
+        inset 0 0 0 7px var(--creme),
+        0 8px 24px rgba(18, 59, 93, 0.1);
+}
+
+
+/* Farbige Dekoration oben links */
+.canvasrahmen::before {
+    content: "";
+
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 46px;
+    height: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--tuerkis) 0 33%,
+            var(--orange) 33% 66%,
+            var(--rosa) 66% 100%
+        );
+
+    border-radius: 999px;
+}
+
+
+/* Farbige Dekoration unten rechts */
+.canvasrahmen::after {
+    content: "";
+
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+
+    width: 46px;
+    height: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--rosa) 0 33%,
+            var(--orange) 33% 66%,
+            var(--tuerkis) 66% 100%
+        );
+
+    border-radius: 999px;
+}
+
+
+#webglCanvas {
+    width: min(700px, 100%);
+    height: auto;
+
+    background-color: transparent;
+
+    border-radius: 12px;
+}
+
+
+/* --------------------------------------------------
+   7. STATUS UND GEOMETRIEDATEN
+-------------------------------------------------- */
+
+.statusanzeige {
+    width: fit-content;
+    max-width: 100%;
+    margin: 24px auto 0;
+    padding: 9px 17px;
+
+    color: var(--erfolg);
+    background-color: #e5f5ee;
+
+    border: 1px solid #a9d8c8;
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.geometriedaten {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+
+    width: min(760px, 100%);
+    margin: 28px auto 0;
+}
+
+
+.datenfeld {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 105px;
+    padding: 18px;
+
+    background-color: #f8fafb;
+
+    border: 1px solid var(--rahmen);
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+
+.datenfeld:nth-child(1) {
+    border-bottom: 4px solid var(--tuerkis);
+}
+
+
+.datenfeld:nth-child(2) {
+    border-bottom: 4px solid var(--orange);
+}
+
+
+.datenfeld:nth-child(3) {
+    border-bottom: 4px solid var(--rosa);
+}
+
+
+.datenwert {
+    color: var(--dunkelblau);
+
+    font-size: 1.8rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+
+.datenbezeichnung {
+    margin-top: 5px;
+
+    color: var(--text-hell);
+
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+
+/* --------------------------------------------------
+   8. DOKUMENTATION
+-------------------------------------------------- */
+
+.dokumentation {
+    padding: 90px 0;
+}
+
+
+.abschnittskopf {
+    max-width: 760px;
+    margin: 0 auto 36px;
+
+    text-align: center;
+}
+
+
+.abschnittskopf h2 {
+    margin: 0;
+
+    color: var(--dunkelblau);
+
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+
+.abschnittskopf > p:last-child {
+    margin: 14px auto 0;
+
+    color: var(--text-hell);
+}
+
+
+.dokumentationsraster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+
+.dokumentationskarte {
+    padding: 28px;
+
+    background-color: var(--weiss);
+
+    border: 1px solid var(--rahmen);
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 24px rgba(18, 59, 93, 0.07);
+}
+
+
+.dokumentationskarte:nth-child(1) {
+    border-top: 5px solid var(--tuerkis);
+}
+
+
+.dokumentationskarte:nth-child(2) {
+    border-top: 5px solid var(--orange);
+}
+
+
+.dokumentationskarte:nth-child(3) {
+    border-top: 5px solid var(--rosa);
+}
+
+
+.dokumentationskarte:nth-child(4) {
+    border-top: 5px solid var(--dunkelblau);
+}
+
+
+.dokumentationskarte h3 {
+    margin: 0 0 15px;
+
+    color: var(--dunkelblau);
+
+    font-size: 1.25rem;
+}
+
+
+.dokumentationskarte p {
+    margin: 0 0 15px;
+}
+
+
+.dokumentationskarte p:last-child {
+    margin-bottom: 0;
+}
+
+
+code {
+    padding: 2px 6px;
+
+    color: var(--dunkelblau);
+    background-color: #e9f1f5;
+
+    border-radius: 5px;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 0.9em;
+}
+
+
+/* --------------------------------------------------
+   9. FUSSBEREICH
+-------------------------------------------------- */
+
+.seitenfuss {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding:
+        28px
+        max(24px, calc((100% - 1120px) / 2));
+
+    color: #dce9ed;
+    background-color: var(--dunkelblau-tief);
+}
+
+
+.seitenfuss p {
+    margin: 0;
+}
+
+
+/* --------------------------------------------------
+   10. RESPONSIVE DARSTELLUNG
+-------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .dokumentationsraster {
+        grid-template-columns: 1fr;
+    }
+
+    .dokumentationskarte {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .seitenkopf {
+        padding: 55px 20px 68px;
+    }
+
+    .kopfbereich {
+        min-height: 0;
+        padding-right: 0;
+
+        text-align: center;
+    }
+
+    .profilbild {
+        position: static;
+
+        width: 125px;
+        max-width: 100%;
+        margin: 25px auto -58px;
+    }
+
+    main {
+        width: min(100% - 24px, 1180px);
+    }
+
+    .webglkarte {
+        padding: 28px 16px;
+
+        border-radius: 18px;
+    }
+
+    .canvasrahmen {
+        padding: 12px;
+
+        border-radius: 14px;
+    }
+
+    .geometriedaten {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .datenfeld {
+        min-height: 84px;
+    }
+
+    .dokumentation {
+        padding: 65px 0;
+    }
+
+    .dokumentationskarte {
+        padding: 23px;
+    }
+
+    .seitenfuss {
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+}
+
+
+/* --------------------------------------------------
+   11. REDUZIERTE BEWEGUNGEN
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* --------------------------------------------------
+   ENTSTEHUNGSPROZESS UND SLIDESHOW
+-------------------------------------------------- */
+
+.entwicklung {
+    width: min(920px, calc(100% - 40px));
+    margin: 55px auto;
+}
+
+.entwicklung .abschnittskopf {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.entwicklung .uebertitel {
+    margin-bottom: 8px;
+    color: #f28c28;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.entwicklung h2 {
+    margin: 0 0 12px;
+    color: #0b3654;
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+}
+
+.entwicklung .abschnittskopf > p:last-child {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #526573;
+    line-height: 1.6;
+}
+
+
+/* Äußerer Bereich der Slideshow */
+
+.slideshow {
+    padding: 22px;
+    background-color: #ffffff;
+    border: 1px solid #cbd9df;
+    border-top: 4px solid #2aa5a1;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(11, 54, 84, 0.12);
+}
+
+.slideshow:focus-visible {
+    outline: 4px solid rgba(242, 140, 40, 0.4);
+    outline-offset: 5px;
+}
+
+
+/* Bild und Bildunterschrift */
+
+.entwicklungsbild {
+    margin: 0;
+}
+
+.entwicklungsbild img {
+    display: block;
+    width: 100%;
+    height: 470px;
+    object-fit: contain;
+    background-color: #f5f9fa;
+    border: 1px solid #d4e1e5;
+    border-radius: 11px;
+}
+
+.entwicklungsbild figcaption {
+    display: grid;
+    gap: 5px;
+    padding: 18px 5px 6px;
+    text-align: center;
+}
+
+#bildZaehler {
+    color: #2aa5a1;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#bildTitel {
+    color: #0b3654;
+    font-size: 1.2rem;
+}
+
+#bildBeschreibung {
+    color: #526573;
+    line-height: 1.5;
+}
+
+
+/* Buttons und Punkte */
+
+.slideshow-steuerung {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.slideshow-steuerung button {
+    min-height: 46px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #0b3654;
+    border: 2px solid #0b3654;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.slideshow-steuerung button:hover {
+    background-color: #176180;
+    border-color: #176180;
+    transform: translateY(-2px);
+}
+
+.slideshow-steuerung button:active {
+    transform: translateY(0);
+}
+
+.slideshow-steuerung button:focus-visible {
+    outline: 4px solid rgba(242, 140, 40, 0.45);
+    outline-offset: 3px;
+}
+
+.bildpunkte {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+}
+
+.bildpunkt {
+    width: 11px;
+    height: 11px;
+    background-color: #cbd9df;
+    border-radius: 50%;
+}
+
+.bildpunkt.aktiv {
+    background-color: #f28c28;
+    transform: scale(1.25);
+}
+
+.tastaturhinweis {
+    margin: 18px 0 0;
+    color: #687b86;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+
+/* Darstellung auf kleineren Bildschirmen */
+
+@media (max-width: 650px) {
+
+    .entwicklung {
+        width: min(100% - 24px, 920px);
+        margin: 40px auto;
+    }
+
+    .slideshow {
+        padding: 14px;
+    }
+
+    .entwicklungsbild img {
+        height: 320px;
+    }
+
+    .slideshow-steuerung {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .slideshow-steuerung button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .bildpunkte {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin-top: 6px;
+    }
+}
+
+/* Zwei gleich große Ansichten des Pinguins */
+.darstellungsbereich {
+    width: min(1120px, calc(100% - 32px));
+    margin-inline: auto;
+}
+
+.webglkarte {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+.vergleichsansichten {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.vergleichskarte {
+    min-width: 0;
+    margin: 0;
+}
+
+.vergleichskarte .canvasrahmen {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+.vergleichskarte canvas,
+.vergleichskarte img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.vergleichskarte figcaption {
+    display: grid;
+    gap: 4px;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.vergleichskarte figcaption span {
+    color: #536577;
+}
+
+/* Auf schmalen Bildschirmen untereinander */
+@media (max-width: 760px) {
+    .vergleichsansichten {
+        grid-template-columns: 1fr;
+    }
+}
