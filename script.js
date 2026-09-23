@@ -1,5 +1,6 @@
 "use strict";
 
+// START AUFGABE_3_FARBIG_GEFUELLTE_DREIECKSGEOMETRIE
 
 // HTML-Elemente auswählen
 const canvas =
@@ -803,7 +804,7 @@ gl.bufferData(
 );
 
 
-
+// START AUFGABE_3_SICHTBARE_DREIECKSKONTUREN
 // Zeigt das fertige WebGL-Bild mit den echten Dreieckskanten
 function dreieckeAnzeigen() {
 
@@ -857,6 +858,8 @@ function dreieckeAnzeigen() {
         dreieckeKontext.stroke(dreieck);
     }
 }
+
+// END AUFGABE_3_SICHTBARE_DREIECKSKONTUREN
 
 // --------------------------------------------------
 // SZENE ZEICHNEN
@@ -942,9 +945,13 @@ function szeneZeichnen() {
 
 szeneZeichnen();
 
+// END AUFGABE_3_FARBIG_GEFUELLTE_DREIECKSGEOMETRIE
+
 // --------------------------------------------------
 // SLIDESHOW ZUM ENTSTEHUNGSPROZESS
 // --------------------------------------------------
+
+// START EIGENE_ERWEITERUNG_SLIDESHOW
 
 // Alle Bilder und dazugehörigen Texte
 const entwicklungsschritte = [
@@ -1151,3 +1158,5 @@ slideshow.addEventListener(
 // Slideshow vorbereiten
 bildpunkteErstellen();
 entwicklungsschrittAnzeigen();
+
+// END EIGENE_ERWEITERUNG_SLIDESHOW
