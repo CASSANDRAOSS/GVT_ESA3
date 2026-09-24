@@ -274,19 +274,20 @@
                     <h3>Technische Umsetzung und Hilfsmittel</h3>
 
                     <p>
-                        Die Webseite wurde in Visual Studio Code mit
-                        HTML, CSS und JavaScript erstellt. Die
+                        Die Webseite wurde mit HTML, CSS und
+                        JavaScript erstellt. Die
                         Geometrie wird mit WebGL in einem
                         <code>&lt;canvas&gt;</code>-Element
                         dargestellt.
                     </p>
 
                     <p>
-                        Alle sichtbaren Flächen bestehen aus
-                        Dreiecken. Es werden keine WebGL-Linien
-                        verwendet. Auch runde Formen wie Körper,
+                        Alle farbig gefüllten Flächen bestehen aus
+                        Dreiecken. Auch runde Formen wie Körper,
                         Bauch und Augen werden aus mehreren kleinen
-                        Dreiecken zusammengesetzt.
+                        Dreiecken zusammengesetzt. In der farbigen
+                        Hauptansicht werden dafür keine Linien
+                        benötigt.
                     </p>
 
                     <p>
@@ -294,10 +295,9 @@
                         die Indices werden in zueinander passenden
                         Arrays gespeichert. Gezeichnet wird mit
                         <code>gl.drawElements()</code> und
-                        <code>gl.TRIANGLES</code>.
-                        Die rechte Vergleichsansicht zeigt zusätzlich 
-                        die Kanten der Dreiecke, aus denen der links mit 
-                        WebGL gefüllte Pinguin aufgebaut ist.
+                        <code>gl.TRIANGLES</code>. Die rechte
+                        Vergleichsansicht zeigt zusätzlich die Kanten
+                        dieser Dreiecke als Linien.
                     </p>
 
                     <p>
@@ -332,19 +332,22 @@
                         den Flächen.
                     </p>
 
-                    <p>
-                        Die verwendete Geometrie und die
-                        Farbgestaltung wurden für diese Aufgabe selbst
-                        erstellt. Fremdes Bildmaterial wurde für den
-                        Pinguin nicht verwendet.
-                    </p>
-
                 </article>
 
 
                 <article class="dokumentationskarte">
 
-                    <h3>Test und Veröffentlichung</h3>
+                    <h3>Quellen, Test und Veröffentlichung</h3>
+
+                    <p>
+                        Als fachliche Grundlage für den Aufbau der
+                        Farbflächen und die Interpolation der Farben
+                        diente die Lerneinheit FRB des Kursmaterials.
+                        Die Geometrie und die Farbgestaltung des
+                        Pinguins wurden für diese Aufgabe selbst
+                        erstellt. Fremdes Bildmaterial wurde nicht
+                        verwendet.
+                    </p>
 
                     <p>
                         Die Darstellung wurde in Google Chrome getestet.
